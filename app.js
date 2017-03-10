@@ -12,13 +12,20 @@
 	function NarrowItDownController(MenuSearchService){
 		var ndown = this;
 		ndown.term = '';
-		ndown.found = [];
+		// keep the list null to start with
+		ndown.found;
 
+		// if the user clicks the search with nothing
+		// in the search field just clear the list
 		ndown.search = function(term){
-			MenuSearchService.getMatchedMenuItems(term)
-				.then(function(found){
-				ndown.found = found;
-			});
+			if (term.length > 0){
+				MenuSearchService.getMatchedMenuItems(term)
+					.then(function(found){
+					ndown.found = found;
+				});
+			} else {
+				ndown.found = [];
+			}
 		}
 		
 		ndown.remove = function(index){
@@ -49,6 +56,10 @@
 
 	function foundItemDirectiveController(){
 		var list = this;
+
+		list.emptyList = function(){
+			return list.items && list.items.length==0;
+		}
 	}
 
 	function foundItems(){

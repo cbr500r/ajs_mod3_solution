@@ -51,15 +51,21 @@ input[type="text"] {
   }
 }
 
-found-items div {
+found-items > div {
   clear: both;
+  columns: 5;
 }
 
-found-items ul {
-  list-style-type: none;
-  padding-left: 0px;
+found-items > div > div {
+  display: inline-block;
+  padding: 0px 2px 2px;
 }
 
-found-items li {
-  padding: 2px;
+found-items > div > div:nth-child(odd){
+  background-color: #eee;
+}
+
+.error{
+  color: red;
+  font-weight: bolder;
 }

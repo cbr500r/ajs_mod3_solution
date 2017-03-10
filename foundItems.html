@@ -1,9 +1,8 @@
 <div>
-	<ul>
-		<li ng-repeat="item in list.items">
-			<span><button ng-click="list.onRemove({index: $index})">Remove</button></span>
-			<span>{{ item.name | uppercase }}</span>
-			<span>({{ item.description }})</span>
-		</li>
-	</ul>
+	<div ng-repeat="item in list.items">
+		<div>{{ item.short_name }} - {{ item.name | uppercase }}</div>
+		<div>({{ item.description }})</div>
+		<div><button ng-click="list.onRemove({index: $index})">Not this one...</button></div>
+	</div>
+	<span class="error" ng-if="list.emptyList()">Nothing found!</error>
 </div>
